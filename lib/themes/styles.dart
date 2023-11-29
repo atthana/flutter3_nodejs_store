@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_node_store/themes/colors.dart';
 
 class AppTheme {
-
   // Custom text theme
   static final customTextTheme = TextTheme(
     bodyMedium: TextStyle(
@@ -62,5 +61,4 @@ class AppTheme {
       iconTheme: IconThemeData(color: icons),
     ),
   );
-
 }

@@ -17,8 +17,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   // ฟังก์ชันเมื่อจบการแสดง Intro
   void _onIntroEnd(context) async {
     // ไปยังหน้า Login
-    // Navigator.pushReplacementNamed(context, AppRouter.login);  // เปิดแบบไม่มีปุ่มย้อนกลับ
-    Navigator.pushNamed(context, AppRouter.login);  // เปิดแบบ back ได้
+    Navigator.pushReplacementNamed(context, AppRouter.login);  // เปิดแบบไม่มีปุ่มย้อนกลับ
+    // Navigator.pushNamed(context, AppRouter.login);  // เปิดแบบ back ได้
   }
 
   // ฟังก์ชันกำหนดภาพที่ใช้แสดงใน Intro
