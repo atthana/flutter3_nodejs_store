@@ -8,4 +8,17 @@ services:
       MYSQL_ROOT_PASSWORD: "1234"
     ports:
       - "3306:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+    restart: always
+
+  phpMyAdmin:
+    depends_on:
+      - mysql
+    image: phpmyadmin
+    environment:
+      PMA_HOST: mysql
+    container_name: phpmyadmin
+    ports:
+      - "8080:80"
     restart: always
