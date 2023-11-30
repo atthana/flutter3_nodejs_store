@@ -22,3 +22,5 @@ services:
     ports:
       - "8080:80"
     restart: always
+
+# user = root, pass = 1234
