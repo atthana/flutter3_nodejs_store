@@ -1,6 +1,8 @@
 // ignore_for_file: unused_field, must_be_immutable
 
 import 'package:flutter/material.dart';
+import 'package:flutter_node_store/app_router.dart';
+import 'package:flutter_node_store/components/custom_text_field.dart';
 import 'package:flutter_node_store/components/rounded_button.dart';
 import 'package:flutter_node_store/components/social_media_options.dart';
 
@@ -33,25 +35,12 @@ class LoginForm extends StatelessWidget {
           Form(
               key: _formKeyLogin,
               child: Column(children: [
-                TextFormField(
+                customTextField(
                   controller: _emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  autofocus: false,
-                  enableSuggestions: false,
-                  autocorrect: false,
-                  decoration: InputDecoration(
-                    hintText: "Email",
-                    prefixIcon: const Icon(Icons.email),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(40),
-                      borderSide:
-                          const BorderSide(width: 0, style: BorderStyle.none),
-                    ),
-                    filled: true,
-                    isDense: true,
-                    contentPadding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                    fillColor: Colors.grey[300],
-                  ),
+                  hintText: "Email",
+                  prefixIcon: const Icon(Icons.email),
+                  obscureText: false,
+                  textInputType: TextInputType.emailAddress,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "กรุณากรอกอีเมล";
@@ -64,22 +53,11 @@ class LoginForm extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                TextFormField(
+                customTextField(
                   controller: _passwordController,
+                  hintText: "Password",
+                  prefixIcon: const Icon(Icons.lock),
                   obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: "Password",
-                    prefixIcon: const Icon(Icons.lock),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(40),
-                      borderSide:
-                          const BorderSide(width: 0, style: BorderStyle.none),
-                    ),
-                    filled: true,
-                    isDense: true,
-                    contentPadding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                    fillColor: Colors.grey[300],
-                  ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "กรุณากรอกรหัสผ่าน";
@@ -98,6 +76,7 @@ class LoginForm extends StatelessWidget {
                     InkWell(
                       onTap: () {
                         //Open Forgot password screen here
+                        Navigator.pushNamed(context, AppRouter.forgotPassword);
                       },
                       child: const Text("ลืมรหัสผ่าน ?"),
                     )
@@ -137,10 +116,10 @@ class LoginForm extends StatelessWidget {
               InkWell(
                 onTap: () {
                   //Open Sign up screen here
-                  
+                  Navigator.pushReplacementNamed(context, AppRouter.register);
                 },
                 child: const Text(
-                  "สมัครฟรี",
+                  "สมัครสมาชิก",
                   style: TextStyle(
                     color: Colors.blue,
                     fontWeight: FontWeight.bold,

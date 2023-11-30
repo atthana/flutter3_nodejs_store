@@ -1,0 +1,180 @@
+================================
+🛴🛴 Flutter 3 Full Stack Workshop  🛴🛴
+================================
+✈ DAY 1
+1.การเตรียมเครื่องมือและความพร้อม
+2.การใช้งานฐานข้อมูล MySQL ผ่าน API
+3.การอัพโหลดไฟล์ภาพผ่าน API (Node JS)
+-------------------------------------------------------
+🛠1. การเตรียมเครื่องมือและความพร้อม
+💻 Java
+---
+java -version
+where java
+set JAVA_HOME
+
+💻 Android SK
+---
+android
+where android
+
+💻 Node JS
+---
+node -v
+npm -v
+npx -v
+where node
+
+💻 Git
+---
+git version
+where git
+
+💻 Flutter SDK
+---
+flutter --version
+flutter doctor
+where flutter
+
+🚀เริ่มต้นสร้างโปรเจ็กต์ใหม่ใน Flutter
+---
+Step 1: สร้างโฟลเดอร์ใหม่ในเครื่องสำหรับเก็บโปรเจ็กต์ในคอร์สอบรมนี้
+----
+mkdir Flutter3FullStack
+
+Step 2: คำสั่งสร้างโปรเจ็กต์ใหม่ในโฟลเดอร์ที่สร้าง
+----
+flutter create --org  com.itgenius flutter_node_store
+
+Step 2: เปิดเข้าใน VSCode
+---
+code flutter_node_store -r
+
+Step 3: รันโปรเจ็กต์
+
+🔌 2.การใช้งานฐานข้อมูล MySQL ผ่าน API
+
+Step 1: สร้างฐานข้อมูลใหม่ชื่อ “flutterstore”
+---
+CREATE DATABASE flutterstore
+    DEFAULT CHARACTER SET = 'utf8mb4';
+
+Step 2: Clone Project from and Install node dependencies
+---
+git clone https://github.com/iamsamitdev/serverapi_ts serverapi
+
+Step 3: เปลี่ยนชื่อ .env_example เป็น .env และกำหนดค่าดังนี้
+---
+DB_HOST=127.0.0.1
+DB_USER=root
+DB_PASSWORD=123456
+DB_PORT=3306
+DB_DATABASE=flutterstore
+ENV=development
+PORT=3000
+JWT_SECRET=itgenius@2023secret
+
+Step 4: รันคำสั่งติดตั้ง Library
+---
+npm install
+
+Step 5: รันคำสั่ง migrate ฐานข้อมูล 
+---
+npx knex migrate:latest
+npm run knex:migrate:latest
+
+Step 6: รันคำสั่ง seed ฐานข้อมูล
+---
+npx knex seed:run
+
+Step 7: รันโปรเจ็กต์ Node.JS Express
+---
+npm start
+
+Step 8: ทดสอบ API Register
+---
+http://localhost:3000/api/auth/register
+
+Method : Post
+Body: Json
+{
+  "firstname":"Samit",
+  "lastname":"Koyom",
+  "email":"samit@email.com",
+  "password":"123456"
+}
+
+Step 9: ทดสอบ API Login
+---
+http://localhost:3000/api/auth/login
+
+Body: Json
+{
+  "email":"samit@email.com",
+  "password":"123456"
+}
+
+Step 10: ทดสอบ API List Products
+---
+http://localhost:3000/api/products
+Method: Get
+Auth: Bearer Token
+
+Step 11: ทดสอบ API List Products by id
+---
+http://localhost:3000/api/products/3
+Method: Get
+Auth: Bearer Token
+
+🔌 3.การอัพโหลดไฟล์ภาพผ่าน API (Node JS)
+
+Step 12: ทดสอบ API Create Product
+---
+http://localhost:3000/api/products
+
+Method : Post
+Auth: Bearer Token
+Body: Form
+
+Field name	value
+----------------------------------------------------
+name		test some product
+description	lorem ipsonefa
+barcode		845964464485
+stock		10
+price		29500
+category_id	1
+user_id		1
+status_id		1
+
+Files
+---------------------------------------------------
+photo		example.jpg
+
+Step 13: ทดสอบ API Edit Product
+---
+http://localhost:3000/api/products/18
+
+Method : Put
+Auth: Bearer Token
+Body: Json
+{
+  "name":"test some product update",
+  "description":"lorem ipsonefa update",
+  "barcode":"845964464485",
+  "stock":11,
+  "price":39500,
+  "category_id":1,
+  "user_id":1,
+  "status_id":1
+}
+
+Step 14: ทดสอบ API Delete Product
+---
+http://localhost:3000/api/products/18
+
+Method : Delete
+Auth: Bearer Token
+
+
+
